@@ -1,0 +1,96 @@
+<!--Importando o módulo chamado express para dentro da variável express-->
+    const express = require('express');
+<!--Criando aplicação, instanciando.-->
+    const app = express();
+<!--pedir que a aplicação ouça a porta 3333-->
+    app.use(express.json());
+<!--Transformar o corpo da requisição em algo entendível pela aplicação-->
+    app.listen(3333);
+<!--Retornar uma resposta ao navegador (send) envia texto-->
+    app.get('/',(request, response) => {
+        return response.send('Hello World')
+    });
+<!--Outro exemplo-->
+    app.get('/',(request, response) => {
+        return response.json({
+            evento: 'Semana OmniStack 11.0',
+            aluno: 'Jeferson Oliveira'
+    });        
+   
+    <!--
+        Rota / Recurso
+    -->
+
+    <!--
+        Métodos HTTP> 
+        GET: Buscar/listar uma informação do back-end
+        POST: Criar uma informação no back-end
+        PUT: Alterar uma informação no back-end
+        DELETE: Deletar uma informação no back-end
+    -->
+
+    <!--
+        Tipos de parâmetros:
+        app.get('/users?name=jeferson',(request, response) => *(quando quero buscar por nome)
+        Query Params: Parâmetros nomeados enviados na rota após "?" (Filtros, paginação)
+        Route Params: Parâmetros utilizados para identificar recursos
+        Buscar usuários por id (http://localhost:333/users/1)
+        Request Body: Corpo da requisição 
+        ex: app.post('/users',(request, response) => {
+            const body = request.body;
+            return response.json ({
+                evento: 'nome',
+                aluno: 'nome'
+            })
+        }
+        (requisição por nome, ex: http://localhost:3333/users?name=jeferson
+        )
+    -->
+    <!--
+        nodemon: Biblioteca que estarei utilizando somente enquanto estiver desenvolvendo a aplicação-->
+    <!--
+        SQL: MySQL, SQLite, PostgreSQL, Microsoft SQL Server, 
+        no mais, o SQL é o formato que a gente utiliza para se comunicar com o banco de dados, buscar dados, escrever etc...
+        NoSQL: MongoDB, CouchDB, etc 
+        Para instalar: 
+        Driver: SELECT * FROM users
+        Query Builder: table('users').select('*').where()   
+-->
+<!--
+    Desacoplando o modo de rotas do express em uma nova variável
+    *importando*
+    const express = require('express');
+
+    const routes = express.Router();
+-->
+<!--
+    Deixando rotas disponíveis para o index acessar
+    
+    module.exports=routes;
+-->
+<!--
+    Importar rotas
+    const routes = require('./routes'); 
+    obs: a utilização do './', serve para referenciar a mesma pasta do arquivo index, e não confundir com arquivo.
+-->
+
+<!--ENTIDADES
+*ONG
+*CASOS (INCIDENT)
+
+FUNCIONALIDADES
+*LOGIN DE ONG
+*LOGUOUT DE ONG
+*CADASTRO DE ONG
+*CADASTRAR NOVOS CASOS
+*DELETAR CASOS
+*LISTAR CASOS ESPECÍFICOS DE UMA ONG
+*LISTAR TODOS OS CASOS
+*ENTRAR EM CONTATO COM A ONG-->
+
+<!--
+    Deletar/alterar, desfazer oque fiz. Método down
+    exports.down = function(knex) {
+  knex.schema.dropTable('ongs');
+};
+-->
